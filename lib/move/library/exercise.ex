@@ -1,4 +1,7 @@
 defmodule Move.Library.Exercise do
+  @moduledoc """
+  The Exercise entity.
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -66,12 +69,9 @@ defmodule Move.Library.Exercise do
       :description,
       :reps,
       :sets,
-      :duration_in_seconds,
-      :weekly_frequency,
       :location,
       :body_part,
-      :equipment,
-      :history
+      :equipment
     ])
   end
 end

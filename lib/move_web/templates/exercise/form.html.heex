@@ -1,0 +1,47 @@
+<.form let={f} for={@changeset} action={@action}>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <%= label f, :description %>
+  <%= text_input f, :description %>
+  <%= error_tag f, :description %>
+
+  <%= label f, :reps %>
+  <%= number_input f, :reps %>
+  <%= error_tag f, :reps %>
+
+  <%= label f, :sets %>
+  <%= number_input f, :sets %>
+  <%= error_tag f, :sets %>
+
+  <%= label f, :duration_in_seconds %>
+  <%= number_input f, :duration_in_seconds %>
+  <%= error_tag f, :duration_in_seconds %>
+
+  <%= label f, :weekly_frequency %>
+  <%= number_input f, :weekly_frequency %>
+  <%= error_tag f, :weekly_frequency %>
+
+  <%= label f, :location %>
+  <%= select f, :location, Ecto.Enum.values(Move.Library.Exercise, :location), prompt: "Choose a value" %>
+  <%= error_tag f, :location %>
+
+  <%= label f, :body_part %>
+  <%= select f, :body_part, Ecto.Enum.values(Move.Library.Exercise, :body_part), prompt: "Choose a value" %>
+  <%= error_tag f, :body_part %>
+
+  <%= label f, :equipment %>
+  <%= select f, :equipment, Ecto.Enum.values(Move.Library.Exercise, :equipment), prompt: "Choose a value" %>
+  <%= error_tag f, :equipment %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+</.form>
