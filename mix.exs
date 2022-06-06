@@ -51,8 +51,6 @@ defmodule Move.MixProject do
       {:ecto_sql, "~> 3.6"},
       {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
       {:excoveralls, "~> 0.10", only: :test},
-      {:ecto_sql, "~> 3.6"},
-      {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
       {:ex_doc, ">= 0.0.0", runtime: false, only: [:docs, :dev]},
       {:floki, ">= 0.30.0", only: :test},
       {:gettext, "~> 0.18"},
