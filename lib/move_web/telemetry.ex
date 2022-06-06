@@ -1,4 +1,7 @@
 defmodule MoveWeb.Telemetry do
+  @moduledoc """
+  Telemetry implementation.
+  """
   use Supervisor
   import Telemetry.Metrics
 
