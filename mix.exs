@@ -10,7 +10,19 @@ defmodule Move.MixProject do
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ],
+      dialyzer: [
+        plt_add_apps: [:ex_unit],
+        plt_add_deps: :app_tree,
+        plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+      ]
     ]
   end
 
@@ -33,8 +45,11 @@ defmodule Move.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.1", only: [:dev, :test], runtime: false},
       {:ecto_sql, "~> 3.6"},
       {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
+      {:excoveralls, "~> 0.10", only: :test},
       {:ex_doc, ">= 0.0.0", runtime: false, only: [:docs, :dev]},
       {:floki, ">= 0.30.0", only: :test},
       {:gettext, "~> 0.18"},
