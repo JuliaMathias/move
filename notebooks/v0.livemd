@@ -1,0 +1,12 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# move
+
+## Building the exercise models
+
+I had already started building the models on [dbdiagram](https://dbdiagram.io/d/628bc30bf040f104c17ed2de) so I only had to quickly generate it using a  phoenix generator:
+
+```bash
+mix phx.gen.html Library Exercise exercises name:string description:string reps:integer sets:integer duration_in_seconds:integer weekly_frequency:integer location:enum:bedroom:irrelevant:living_room body_part:enum:arms:back:calves:core:feet:glutes:hands:hips:legs:neck:shoulders:thighs:wrists equipment:enum:ankle_weights:dumbells:elastic_bands:finger_elastics:mini_resistance_bands:none:resistance_bands history:map
+'''
+```

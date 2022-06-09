@@ -1,0 +1,35 @@
+<h1>Listing Exercises</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Reps</th>
+      <th>Sets</th>
+      <th>Location</th>
+      <th>Body part</th>
+      <th>Equipment</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for exercise <- @exercises do %>
+    <tr>
+      <td><%= link exercise.name, to: Routes.exercise_path(@conn, :show, exercise) %><%=  %></td>
+      <td><%= exercise.reps %></td>
+      <td><%= exercise.sets %></td>
+      <td><%= exercise.location %></td>
+      <td><%= exercise.body_part %></td>
+      <td><%= exercise.equipment %></td>
+
+
+      <td>
+        <span><%= link "Delete", to: Routes.exercise_path(@conn, :delete, exercise), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Exercise", to: Routes.exercise_path(@conn, :new) %></span>

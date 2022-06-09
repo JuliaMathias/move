@@ -1,0 +1,50 @@
+<h1><%= @exercise.name %></h1>
+
+  <%= text_to_html(@exercise.description) %>
+
+
+<ul>
+  <li>
+    <strong>Reps:</strong>
+    <%= @exercise.reps %>
+  </li>
+
+  <li>
+    <strong>Sets:</strong>
+    <%= @exercise.sets %>
+  </li>
+
+  <li>
+    <strong>Duration in seconds:</strong>
+    <%= @exercise.duration_in_seconds %>
+  </li>
+
+  <li>
+    <strong>Weekly frequency:</strong>
+    <%= @exercise.weekly_frequency %>
+  </li>
+
+  <li>
+    <strong>Location:</strong>
+    <%= @exercise.location %>
+  </li>
+
+  <li>
+    <strong>Body part:</strong>
+    <%= @exercise.body_part %>
+  </li>
+
+  <li>
+    <strong>Equipment:</strong>
+    <%= @exercise.equipment %>
+  </li>
+
+  <li>
+    <strong>History:</strong>
+    <%= inspect @exercise.history %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.exercise_path(@conn, :edit, @exercise) %></span> |
+<span><%= link "Back", to: Routes.exercise_path(@conn, :index) %></span>
