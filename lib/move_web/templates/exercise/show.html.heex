@@ -1,17 +1,9 @@
-<h1>Show Exercise</h1>
+<h1><%= @exercise.name %></h1>
+
+  <%= text_to_html(@exercise.description) %>
+
 
 <ul>
-
-  <li>
-    <strong>Name:</strong>
-    <%= @exercise.name %>
-  </li>
-
-  <li>
-    <strong>Description:</strong>
-    <%= @exercise.description %>
-  </li>
-
   <li>
     <strong>Reps:</strong>
     <%= @exercise.reps %>
