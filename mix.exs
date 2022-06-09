@@ -66,7 +66,8 @@ defmodule Move.MixProject do
       {:swoosh, "~> 1.3"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
-      {:waffle, "~> 1.1"}
+      {:waffle, "~> 1.1"},
+      {:waffle_ecto, "~> 0.0"}
     ]
   end
 
