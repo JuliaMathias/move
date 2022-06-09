@@ -61,8 +61,10 @@ defmodule MoveWeb.ExerciseControllerTest do
       assert %{id: id} = redirected_params(conn)
       assert redirected_to(conn) == Routes.exercise_path(conn, :show, id)
 
-      conn = get(conn, Routes.exercise_path(conn, :show, id))
-      assert html_response(conn, 200) =~ "Show Exercise"
+      %{assigns: %{exercise: %{name: name}}} =
+        conn = get(conn, Routes.exercise_path(conn, :show, id))
+
+      assert html_response(conn, 200) =~ name
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
