@@ -3,6 +3,8 @@ defmodule Move.Library.Exercise do
   The Exercise entity.
   """
   use Ecto.Schema
+  use Waffle.Ecto.Schema
+
   import Ecto.Changeset
 
   @primary_key {:id, :id, autogenerate: true}
@@ -45,6 +47,7 @@ defmodule Move.Library.Exercise do
     field :reps, :integer, default: 1
     field :sets, :integer, default: 1
     field :weekly_frequency, :integer
+    field :image, MoveWeb.Uploaders.ExerciseImage.Type
 
     timestamps()
   end
@@ -73,5 +76,11 @@ defmodule Move.Library.Exercise do
       :body_part,
       :equipment
     ])
+  end
+
+  def image_changeset(exercise, attrs) do
+    exercise
+    |> cast_attachments(attrs, [:image])
+    |> validate_required([:image])
   end
 end

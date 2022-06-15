@@ -4,8 +4,9 @@ defmodule Move.Library do
   """
 
   import Ecto.Query, warn: false
-  alias Move.Repo
 
+  alias Ecto.Multi
+  alias Move.Repo
   alias Move.Library.Exercise
 
   @doc """
@@ -49,7 +50,18 @@ defmodule Move.Library do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_exercise(attrs \\ %{}) do
+  def create_exercise(attrs \\ %{})
+
+  def create_exercise(%{image: _image} = attrs) do
+    exercise = %Exercise{}
+
+    Multi.new()
+    |> Multi.insert(:exercise, Exercise.changeset(exercise, attrs))
+    |> Multi.update(:exercise_with_image, &Exercise.image_changeset(&1.exercise, attrs))
+    |> Repo.transaction()
+  end
+
+  def create_exercise(attrs) do
     %Exercise{}
     |> Exercise.changeset(attrs)
     |> Repo.insert()

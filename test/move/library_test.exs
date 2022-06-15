@@ -58,6 +58,23 @@ defmodule Move.LibraryTest do
       assert exercise.weekly_frequency == 42
     end
 
+    test "can create exercise with image" do
+      valid_attrs = %{
+        body_part: :arms,
+        description: "some description",
+        duration_in_seconds: 42,
+        equipment: :ankle_weights,
+        history: %{},
+        location: :bedroom,
+        name: "some name",
+        reps: 42,
+        sets: 42,
+        weekly_frequency: 42
+      }
+
+      assert {:ok, %Exercise{}} = Library.create_exercise(valid_attrs)
+    end
+
     test "create_exercise/1 with invalid data returns error changeset" do
       assert {:error, %Ecto.Changeset{}} = Library.create_exercise(@invalid_attrs)
     end
